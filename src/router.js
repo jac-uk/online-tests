@@ -98,7 +98,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/vacancies',
+      redirect: '/online-tests',
     },
     {
       path: '*',
