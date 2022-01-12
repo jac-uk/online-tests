@@ -89,11 +89,6 @@ export default {
       errors: [],
     };
   },
-  computed: {
-    exerciseId () {
-      return this.$store.state.vacancy.record && this.$store.state.vacancy.record.id;
-    },
-  },
   methods: {
     // loginWithGoogle() {
     //   const provider = new auth.GoogleAuthProvider();
@@ -104,8 +99,6 @@ export default {
         this.errors = [];
         auth().signInWithEmailAndPassword(this.formData.email, this.formData.password)
           .then((userCredential) => {
-
-            // LOG
             const objToLog = {
               type: 'login',
               id: userCredential.user.uid,

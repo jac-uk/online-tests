@@ -21,14 +21,7 @@
         </a>
         <span v-else>vacancy timeline</span>.
         <br>
-        You may now close this page, return to the
-        <router-link
-          class="govuk-link"
-          to="/"
-        >
-          homepage
-        </router-link>
-        or go back to
+        You may now close this page or go back to
         <router-link
           class="govuk-link"
           :to="{ name: 'qualifying-tests' }"
