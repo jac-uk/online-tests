@@ -12,20 +12,20 @@
         >
           <ul class="moj-side-navigation__list">
             <li class="moj-side-navigation__item">
-              <RouterLink
+              <a
                 class="govuk-link info-link--nav-qualifying-tests--vacancies"
-                :to="{ name: 'vacancies' }"
+                :href="`${applySiteURL}/vacancies`"
               >
                 Vacancies
-              </RouterLink>
+              </a>
             </li>
             <li class="moj-side-navigation__item">
-              <RouterLink
+              <a
                 class="govuk-link info-link--nav-qualifying-tests--applications"
-                :to="{ name: 'applications' }"
+                :href="`${applySiteURL}/applications`"
               >
                 Applications
-              </RouterLink>
+              </a>
             </li>
             <li class="moj-side-navigation__item moj-side-navigation__item--active">
               <RouterLink
@@ -200,6 +200,9 @@ export default {
         return true;
       });
       return result;
+    },
+    applySiteURL() {
+      return process.env.VUE_APP_APPLY_URL;
     },
   },
   async mounted() {

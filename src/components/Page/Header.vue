@@ -98,6 +98,9 @@ export default {
     userName() {
       return this.$store.state.auth.currentUser.displayName ? this.$store.state.auth.currentUser.displayName : this.$store.state.auth.currentUser.email;
     },
+    applySiteURL() {
+      return process.env.VUE_APP_APPLY_URL;
+    },
   },
   methods: {
     toggleExpand(){
@@ -113,7 +116,7 @@ export default {
       }
     },
     gotoVacancies() {
-      this.$router.push({ name: 'vacancies' });
+      window.location.href = `${this.applySiteURL}/vacancies`;
     },
   },
 };
