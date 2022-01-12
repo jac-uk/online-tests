@@ -18,7 +18,7 @@
               </a>
             </div>
           </div>
-          
+
           <div class="govuk-grid-column-one-third organisation__margin-bottom">
             <button
               v-if="isSignedIn"
@@ -111,9 +111,7 @@ export default {
     },
     signOut() {
       auth().signOut();
-      if (this.$route.name != 'vacancies') {
-        this.$router.push({ name: 'vacancies' });
-      }
+      this.gotoVacancies();
     },
     gotoVacancies() {
       window.location.href = `${this.applySiteURL}/vacancies`;
