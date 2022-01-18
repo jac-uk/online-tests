@@ -89,11 +89,6 @@ export default {
       errors: [],
     };
   },
-  computed: {
-    exerciseId () {
-      return this.$store.state.vacancy.record && this.$store.state.vacancy.record.id;
-    },
-  },
   methods: {
     // loginWithGoogle() {
     //   const provider = new auth.GoogleAuthProvider();
@@ -104,8 +99,6 @@ export default {
         this.errors = [];
         auth().signInWithEmailAndPassword(this.formData.email, this.formData.password)
           .then((userCredential) => {
-
-            // LOG
             const objToLog = {
               type: 'login',
               id: userCredential.user.uid,
@@ -115,14 +108,8 @@ export default {
               },
             };
             this.$store.dispatch('logs/save', objToLog);
-            // LOG
-
             this.$store.dispatch('auth/setCurrentUser', userCredential.user);
-            if (this.$store.getters['vacancy/id']) {
-              this.$router.push({ name: 'task-list', params: { id: `${this.$store.getters['vacancy/id']}` } });
-            } else {
-              this.$router.push({ name: 'applications' });
-            }
+            this.$router.push({ name: 'qualifying-tests' });
           })
           .catch((error) => {
             this.errors.push({ id: 'email', message: error.message });

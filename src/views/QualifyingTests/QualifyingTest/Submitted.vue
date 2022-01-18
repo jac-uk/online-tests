@@ -12,23 +12,16 @@
 
       <p class="govuk-body-m govuk-!-margin-top-0">
         You will be informed of the outcome of your test, as indicated on the
-        <router-link
+        <a
           v-if="qualifyingTestResponse.vacancy"
           class="govuk-link"
-          :to="`/vacancy/${qualifyingTestResponse.vacancy.id}`"
+          :href="`${applySiteURL}/vacancy/${qualifyingTestResponse.vacancy.id}`"
         >
           vacancy timeline
-        </router-link>
+        </a>
         <span v-else>vacancy timeline</span>.
         <br>
-        You may now close this page, return to the
-        <router-link
-          class="govuk-link"
-          to="/"
-        >
-          homepage
-        </router-link>
-        or go back to
+        You may now close this page or go back to
         <router-link
           class="govuk-link"
           :to="{ name: 'qualifying-tests' }"
@@ -104,6 +97,9 @@ export default {
           return true;
         }
       });
+    },
+    applySiteURL() {
+      return process.env.VUE_APP_APPLY_URL;
     },
   },
   created() {

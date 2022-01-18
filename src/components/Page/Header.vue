@@ -38,7 +38,6 @@
               Sign In
             </button>
             <button
-              :disabled="isVacanciesPage"
               class="govuk-button  info-btn--header--vacancies"
               data-module="govuk-button"
               @click="gotoVacancies"
@@ -88,9 +87,6 @@ export default {
   computed: {
     isSignInPage() {
       return this.$route.name === 'sign-in';
-    },
-    isVacanciesPage() {
-      return this.$route.name === 'vacancies';
     },
     isSignedIn() {
       return this.$store.getters['auth/isSignedIn'];
