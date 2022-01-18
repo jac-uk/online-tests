@@ -14,6 +14,7 @@
             <li class="moj-side-navigation__item">
               <a
                 class="govuk-link info-link--nav-qualifying-tests--vacancies"
+                data-cy="nav-online-tests-link"
                 :href="`${applySiteURL}/vacancies`"
               >
                 Vacancies
