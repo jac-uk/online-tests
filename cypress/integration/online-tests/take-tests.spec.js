@@ -26,15 +26,14 @@ context('Exercise1', () => {
     }
   });
 
-  it('Click Vacancies link', () => {
-    cy.visit(`${Cypress.config().baseUrl}/sign-in`);
-    cy.get('.info-btn--header--vacancies').contains('Vacancies').click();
-    cy.url().should('eq', `${Cypress.config().baseUrl}/vacancies`);
-  });
-
   it('Login using non-JAC account', () => {
     cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/').wait(1000);
+  });
+
+  it('Click Online Tests link', () => {
+    cy.get('[data-cy=online-tests-link]').click();
+    cy.url().should('eq', `${Cypress.config().baseUrl}/online-tests`);
   });
 
 });
