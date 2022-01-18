@@ -28,7 +28,7 @@ context('Online Tests', () => {
   });
 
   it('Go to page when logged in', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     routes.forEach((route) => {
       cy.visit(route);
       cy.get('.govuk-button').contains('Sign Out');

@@ -15,13 +15,13 @@ context('Login', () => {
   });
 
   it('Check the user can log in', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/').wait(3000);
     cy.contains('You are now signed in as');
   });
 
   it('Check the user can log out', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/').wait(3000);
     cy.get('.info-btn--header--sign-out').contains('Sign Out').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/vacancies`);
@@ -33,7 +33,7 @@ context('Login', () => {
   });
 
   it('Check that the user can access the online tests page when they are logged in', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/').wait(3000);
     cy.url().should('eq', `${Cypress.config().baseUrl}/online-tests`);
   });

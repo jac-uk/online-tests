@@ -7,7 +7,7 @@ context('Online Tests', () => {
     // before running our tests make sure we are logged out and on the homepage
     cy.logout();
     cy.visit('/').wait(3000);
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/online-tests');
   });
 

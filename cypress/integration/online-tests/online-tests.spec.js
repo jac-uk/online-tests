@@ -10,7 +10,7 @@ context('Online Tests', () => {
     // before running our tests make sure we are logged out and on the homepage
     cy.logout();
     cy.visit('/').wait(3000);
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.visit('/online-tests');
   });
 
@@ -80,7 +80,7 @@ context('Online Tests', () => {
 
   it.skip('If someone changes their local clock, check it does not mess up the timer for the exercise', () => {
     if (!qualifyingTestId) return;
-   
+
   });
 
   it(`Check that the QT ends automatically when the user's time runs out.`, () => {
@@ -122,7 +122,7 @@ context('Online Tests', () => {
 
   it('Check you cannot edit a submitted test', () => {
     if (!qualifyingTestId) return;
-    
+
     cy.visit(`${Cypress.config().baseUrl}/online-tests/${qualifyingTestId}/information`);
     cy.url().should('eq', `${Cypress.config().baseUrl}/online-tests`);
   });

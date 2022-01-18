@@ -10,8 +10,8 @@ context('Logout', () => {
   });
 
   it('auto-redirect after session timeout', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
     cy.visit('/dashboard').wait(3000); // in case the page content takes a while to render on the Browser
+    cy.login(Cypress.env('APPLY_TEST_UID'));
     cy.logout(); // simulate a timeout, by logging the user out programatically
     cy.reload().wait(3000);
     cy.url().should('eq', `${Cypress.config().baseUrl}/sign-in`);
@@ -20,8 +20,8 @@ context('Logout', () => {
   // TODO - The 'click' operation in the test below doesn't work for some reason
 
   // it('auto-redirect after logout', () => {
-    // cy.login(Cypress.env('ADMIN_TEST_UID'));
     // cy.visit('/dashboard').wait(3000); // in case the page content takes a while to render on the Browser
+    // cy.login(Cypress.env('APPLY_TEST_UID'));
     // cy.get('[data-cy=nav-sign-out-link]').click();
     // cy.url().should('eq', `${Cypress.config().baseUrl}/sign-in`);
   // });

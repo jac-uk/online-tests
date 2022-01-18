@@ -20,7 +20,7 @@ context('Exercise1', () => {
     const title = 'JAC Digital Platform';
     if (cy.title() !== title) {
       cy.get('title').then(element => {
-        element[0].innerHTML = title; 
+        element[0].innerHTML = title;
       });
       cy.title().should('include', title);
     }
@@ -34,11 +34,6 @@ context('Exercise1', () => {
 
   it('Login using non-JAC account', () => {
     cy.login(Cypress.env('APPLY_TEST_UID'));
-    cy.visit('/').wait(1000);
-  });
-
-  it('Login using JAC account', () => {
-    cy.login(Cypress.env('ADMIN_TEST_UID'));
     cy.visit('/').wait(1000);
   });
 
