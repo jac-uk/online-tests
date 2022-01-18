@@ -14,8 +14,8 @@
             <li class="moj-side-navigation__item">
               <a
                 class="govuk-link info-link--nav-qualifying-tests--vacancies"
-                data-cy="nav-online-tests-link"
                 :href="`${applySiteURL}/vacancies`"
+                data-cy="vacancies-link"
               >
                 Vacancies
               </a>
@@ -24,6 +24,7 @@
               <a
                 class="govuk-link info-link--nav-qualifying-tests--applications"
                 :href="`${applySiteURL}/applications`"
+                data-cy="applications-link"
               >
                 Applications
               </a>
@@ -33,6 +34,7 @@
                 class="govuk-link info-link--nav-qualifying-tests--qualifying-tests"
                 aria-current="page"
                 :to="{ name: 'qualifying-tests' }"
+                data-cy="online-tests-link"
               >
                 Online tests
               </RouterLink>
