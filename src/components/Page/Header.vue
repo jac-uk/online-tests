@@ -18,7 +18,7 @@
               </a>
             </div>
           </div>
-          
+
           <div class="govuk-grid-column-one-third organisation__margin-bottom">
             <button
               v-if="isSignedIn"
@@ -38,7 +38,6 @@
               Sign In
             </button>
             <button
-              :disabled="isVacanciesPage"
               class="govuk-button  info-btn--header--vacancies"
               data-module="govuk-button"
               @click="gotoVacancies"
@@ -89,14 +88,14 @@ export default {
     isSignInPage() {
       return this.$route.name === 'sign-in';
     },
-    isVacanciesPage() {
-      return this.$route.name === 'vacancies';
-    },
     isSignedIn() {
       return this.$store.getters['auth/isSignedIn'];
     },
     userName() {
       return this.$store.state.auth.currentUser.displayName ? this.$store.state.auth.currentUser.displayName : this.$store.state.auth.currentUser.email;
+    },
+    applySiteURL() {
+      return process.env.VUE_APP_APPLY_URL;
     },
   },
   methods: {
@@ -108,12 +107,10 @@ export default {
     },
     signOut() {
       auth().signOut();
-      if (this.$route.name != 'vacancies') {
-        this.$router.push({ name: 'vacancies' });
-      }
+      this.gotoVacancies();
     },
     gotoVacancies() {
-      this.$router.push({ name: 'vacancies' });
+      window.location.href = `${this.applySiteURL}/vacancies`;
     },
   },
 };
