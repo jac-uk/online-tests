@@ -116,7 +116,6 @@ export default {
         subNavigation.push({ path: `${path}/tasks`, title: 'Tasks' });
       }
       if (this.isProcessing) {
-        subNavigation.push({ path: `${path}/stages`, title: 'Stages' });
         subNavigation.push({ path: `${path}/reports`, title: 'Reports' });
       }
       return subNavigation;

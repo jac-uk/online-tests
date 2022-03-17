@@ -17,11 +17,6 @@ import notifications from '@/store/notifications';
 import invitations from '@/store/invitations';
 import events from '@/store/events';
 
-import stageReview from '@/store/stage/review';
-import stageSelected from '@/store/stage/selected';
-import stageHandover from '@/store/stage/handover';
-import stageRecommended from '@/store/stage/recommended';
-import stageShortlisted from '@/store/stage/shortlisted';
 import characterChecks from '@/store/characterChecks/characterChecks';
 import candidates from '@/store/candidates';
 import notes from '@/store/notes';
@@ -49,11 +44,6 @@ const store = new Vuex.Store({
     events,
     notifications,
     invitations,
-    stageReview,
-    stageSelected,
-    stageHandover,
-    stageRecommended,
-    stageShortlisted,
     candidates,
     notes,
     candidateApplications,
