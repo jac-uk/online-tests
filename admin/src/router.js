@@ -49,15 +49,7 @@ import ExerciseApplication from '@/views/Exercise/Applications/Application';
 
 // Exercise reports
 import ExerciseReports from '@/views/Exercise/Reports';
-import ExerciseReportsDiversity from '@/views/Exercise/Reports/Diversity';
-import ExerciseReportsCustom from '@/views/Exercise/Reports/Custom';
-import ExerciseReportsOutreach from '@/views/Exercise/Reports/Outreach';
-import ExerciseReportsCharacterIssues from '@/views/Exercise/Reports/CharacterIssues';
-import ExerciseReportsEligibilityIssues from '@/views/Exercise/Reports/EligibilityIssues';
-import ExerciseReportsReasonableAdjustments from '@/views/Exercise/Reports/ReasonableAdjustments';
 import ExerciseReportsQualifyingTestReports from '@/views/Exercise/Reports/QualifyingTestReports/QualifyingTestReports';
-import ExerciseReportsAgency from '@/views/Exercise/Reports/Agency';
-import ExerciseReportsHandover from '@/views/Exercise/Reports/Handover';
 import QualifyingTestReportCreate from '@/views/Exercise/Reports/QualifyingTestReports/Create';
 import QualifyingTestReport from '@/views/Exercise/Reports/QualifyingTestReports/QualifyingTestReport';
 import QualifyingTestReports from '@/views/Exercise/Reports/QualifyingTestReports/QualifyingTestReports';
@@ -1059,58 +1051,6 @@ const router = new Router({
           component: ExerciseReports,
           children: [
             {
-              path: '',
-              redirect: 'diversity',
-            },
-            {
-              path: 'diversity',
-              component: ExerciseReportsDiversity,
-              meta: {
-                requiresAuth: true,
-                title: 'Diversity | Exercise Reports',
-              },
-            },
-            {
-              path: 'custom',
-              component: ExerciseReportsCustom,
-              meta: {
-                requiresAuth: true,
-                title: 'Custom Report | Exercise Reports',
-              },
-            },
-            {
-              path: 'outreach',
-              component: ExerciseReportsOutreach,
-              meta: {
-                requiresAuth: true,
-                title: 'Outreach | Exercise Reports',
-              },
-            },
-            {
-              path: 'character-issues',
-              component: ExerciseReportsCharacterIssues,
-              meta: {
-                requiresAuth: true,
-                title: 'Character Issues | Exercise Reports',
-              },
-            },
-            {
-              path: 'eligibility-issues',
-              component: ExerciseReportsEligibilityIssues,
-              meta: {
-                requiresAuth: true,
-                title: 'Eligibility Issues | Exercise Reports',
-              },
-            },
-            {
-              path: 'reasonable-adjustments',
-              component: ExerciseReportsReasonableAdjustments,
-              meta: {
-                requiresAuth: true,
-                title: 'Reasonable Adjustments | Exercise Reports',
-              },
-            },
-            {
               path: 'qualifying-test-reports',
               component: EmptyRouterView,
               children: [
@@ -1228,23 +1168,6 @@ const router = new Router({
                   },
                 },
               ],
-            },
-
-            {
-              path: 'agency',
-              component: ExerciseReportsAgency,
-              meta: {
-                requiresAuth: true,
-                title: 'Agency | Exercise Reports',
-              },
-            },
-            {
-              path: 'handover',
-              component: ExerciseReportsHandover,
-              meta: {
-                requiresAuth: true,
-                title: 'Handover | Exercise Reports',
-              },
             },
           ],
         },

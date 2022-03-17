@@ -24,43 +24,11 @@ export default {
     return {
       sideNavigation: [
         {
-          title: 'Diversity',
-          path: `${path}/diversity`,
-        },
-        {
-          title: 'Outreach',
-          path: `${path}/outreach`,
-        },
-        {
-          title: 'Character Issues',
-          path: `${path}/character-issues`,
-        },
-        {
-          title: 'Eligibility Issues',
-          path: `${path}/eligibility-issues`,
-        },
-        {
-          title: 'Reasonable Adjustments',
-          path: `${path}/reasonable-adjustments`,
-        },
-        {
           title: 'Qualifying Test Reports',
           path: `${path}/qualifying-test-reports`,
           params: {
             nav: '/reports/qualifying-test-reports',
           },
-        },
-        {
-          title: 'Agency',
-          path: `${path}/agency`,
-        },
-        {
-          title: 'Handover',
-          path: `${path}/handover`,
-        },
-        {
-          title: 'Custom',
-          path: `${path}/custom`,
         },
       ],
     };
