@@ -17,13 +17,6 @@
           >
             Show my favourites
           </button>
-          <router-link
-            ref="linkToNewExercise"
-            to="/create-exercise"
-            class="govuk-button govuk-!-margin-right-1 govuk-!-margin-bottom-0"
-          >
-            Create an exercise
-          </router-link>
         </div>
       </div>
     </div>

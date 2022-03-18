@@ -1,16 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/store';
-import { STATUS } from '@jac-uk/jac-kit/helpers/constants';
 
 import EmptyRouterView from '@/components/EmptyRouterView';
 
 import SignIn from '@/views/SignIn';
-import NotificationsList from '@/views/NotificationsList';
-import EventsList from '@/views/EventsList';
 
 // Exercises
-import CreateExercise from '@/views/CreateExercise';
 import Exercises from '@/views/Exercises';
 import ExercisesExport from '@/views/ExercisesExport';
 import Exercise from '@/views/Exercise';
@@ -42,11 +38,6 @@ import ExerciseDetailsVacancyEdit from '@/views/Exercise/Details/Vacancy/Edit';
 import ExerciseDetailsPreferences from '@/views/Exercise/Details/Preferences/View';
 import ExerciseDetailsPreferencesEdit from '@/views/Exercise/Details/Preferences/Edit';
 
-// Appplications
-import ExerciseApplications from '@/views/Exercise/Applications';
-import ExerciseApplicationsList from '@/views/Exercise/Applications/List';
-import ExerciseApplication from '@/views/Exercise/Applications/Application';
-
 // Exercise reports
 import ExerciseReports from '@/views/Exercise/Reports';
 import ExerciseReportsQualifyingTestReports from '@/views/Exercise/Reports/QualifyingTestReports/QualifyingTestReports';
@@ -59,15 +50,6 @@ import QualifyingTestReportViewScore from '@/views/Exercise/Reports/QualifyingTe
 
 // Exercise tasks
 import ExerciseTasks from '@/views/Exercise/Tasks';
-import ExerciseTasksIndependentAssessments from '@/views/Exercise/Tasks/IndependentAssessments';
-import ExerciseTasksCharacterChecks from '@/views/Exercise/Tasks/CharacterChecks';
-import ExerciseTasksCharacterChecksEdit from '@/views/Exercise/Tasks/CharacterChecksEdit';
-import ExerciseTasksPanels from '@/views/Exercise/Tasks/Panels';
-import ExerciseTasksPanelsNew from '@/views/Exercise/Tasks/PanelsNew';
-import ExerciseTasksPanelsView from '@/views/Exercise/Tasks/PanelsView';
-import ExerciseTasksSift from '@/views/Exercise/Tasks/Sift';
-import ExerciseTasksSelectionDays from '@/views/Exercise/Tasks/SelectionDays';
-import ExerciseTaskScenario from '@/views/Exercise/Tasks/Scenario';
 import QualifyingTests from '@/views/Exercise/Tasks/QualifyingTests/Cover';
 import QualifyingTest from '@/views/Exercise/Tasks/QualifyingTests/QualifyingTest';
 import QualifyingTestNew from '@/views/Exercise/Tasks/QualifyingTests/QualifyingTest/New';
@@ -93,9 +75,6 @@ import PageNotFound from '@/views/Errors/PageNotFound';
 
 import Sandbox from '@/views/Sandbox';
 
-// Users
-import Users from '@/views/Users/Users';
-
 Vue.use(Router);
 
 const router = new Router({
@@ -113,33 +92,6 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         title: 'Exercises',
-      },
-    },
-    {
-      path: '/events',
-      name: 'events',
-      component: EventsList,
-      meta: {
-        requiresAuth: true,
-        title: 'Events',
-      },
-    },
-    {
-      path: '/users',
-      name: 'users',
-      component: Users,
-      meta: {
-        requiresAuth: true,
-        title: 'Users',
-      },
-    },
-    {
-      path: '/notifications',
-      name: 'notifications',
-      component: NotificationsList,
-      meta: {
-        requiresAuth: true,
-        title: 'Notifications',
       },
     },
     {
@@ -184,15 +136,6 @@ const router = new Router({
           },
         },
       ],
-    },
-    {
-      path: '/create-exercise',
-      component: CreateExercise,
-      name: 'create-exercise',
-      meta: {
-        requiresAuth: true,
-        title: 'Create Exercise',
-      },
     },
     {
       path: '/exercise/:id',
@@ -491,74 +434,6 @@ const router = new Router({
           ],
         },
         {
-          path: 'applications',
-          component: ExerciseApplications,
-          children: [
-            {
-              path: '',
-              redirect: STATUS.APPLIED,
-            },
-            {
-              name: `exercise-applications-${STATUS.DRAFT}`,
-              path: STATUS.DRAFT,
-              component: ExerciseApplicationsList,
-              props: {
-                status: STATUS.DRAFT,
-              },
-              meta: {
-                requiresAuth: true,
-                title: 'Draft | Applications',
-              },
-            },
-            {
-              name: `exercise-applications-${STATUS.APPLIED}`,
-              path: STATUS.APPLIED,
-              component: ExerciseApplicationsList,
-              props: {
-                status: STATUS.APPLIED,
-              },
-              meta: {
-                requiresAuth: true,
-                title: 'Applied | Applications',
-              },
-            },
-            {
-              name: `exercise-applications-${STATUS.WITHDRAWN}`,
-              path: STATUS.WITHDRAWN,
-              component: ExerciseApplicationsList,
-              props: {
-                status: STATUS.WITHDRAWN,
-              },
-              meta: {
-                requiresAuth: true,
-                title: 'Withdrawn | Applications',
-              },
-            },
-            {
-              path: 'application/:applicationId',
-              // Note this path accepts incoming requests where we just know the applicationId
-              // Our `ExerciseApplication` component gets the status
-              // and then redirects to the 'exercise-applications-application' route
-              // so that the status side navigation works
-              component: ExerciseApplication,
-              name: 'exercise-application',
-              meta: {
-                requiresAuth: true,
-                title: 'Exercise Application',
-              },
-            },
-            {
-              path: ':status/application/:applicationId',
-              component: ExerciseApplication,
-              name: 'exercise-applications-application',
-              meta: {
-                requiresAuth: true,
-                title: 'Exercise Application',
-              },
-            },
-          ],
-        },
-        {
           path: 'tasks',
           component: ExerciseTasks,
           children: [
@@ -666,33 +541,6 @@ const router = new Router({
               ],
             },
             {
-              path: 'independent-assessments',
-              component: ExerciseTasksIndependentAssessments,
-              name: 'exercise-tasks-independent-assessments',
-              meta: {
-                requiresAuth: true,
-                title: 'Independent Assessments | Exercise Tasks',
-              },
-            },
-            {
-              path: 'character-checks',
-              component: ExerciseTasksCharacterChecks,
-              name: 'exercise-tasks-character-checks',
-              meta: {
-                requiresAuth: true,
-                title: 'Character Checks | Exercise Tasks',
-              },
-            },
-            {
-              path: 'character-checks/edit',
-              component: ExerciseTasksCharacterChecksEdit,
-              name: 'exercise-tasks-character-checks-edit',
-              meta: {
-                requiresAuth: true,
-                title: 'Edit Character Checks | Exercise Tasks',
-              },
-            },
-            {
               path: 'qualifying-tests',
               component: QualifyingTests,
               props: {
@@ -797,107 +645,6 @@ const router = new Router({
                       },
                     },
                   ],
-                },
-              ],
-            },
-            {
-              path: 'sift',
-              component: ExerciseTasksPanels,
-              children: [
-                {
-                  path: '',
-                  component: ExerciseTasksSift,
-                  name: 'exercise-tasks-sift',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Sift | Exercise Tasks',
-                  },
-                },
-                {
-                  path: 'new',
-                  component: ExerciseTasksPanelsNew,
-                  name: 'exercise-tasks-sift-new',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Create Sift Panel | Exercise Tasks',
-                    pageName: 'exercise-tasks-sift',
-                  },
-                },
-                {
-                  path: 'view/:panelId',
-                  component: ExerciseTasksPanelsView,
-                  name: 'exercise-tasks-sift-view',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Sift Panel | Exercise Tasks',
-                    pageName: 'exercise-tasks-sift',
-                  },
-                },
-              ],
-            },
-            {
-              path: 'selection',
-              component: ExerciseTasksPanels,
-              children: [
-                {
-                  path: '',
-                  component: ExerciseTasksSelectionDays,
-                  name: 'exercise-tasks-selection',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Selection | Exercise Tasks',
-                  },
-                },
-                {
-                  path: 'new',
-                  component: ExerciseTasksPanelsNew,
-                  name: 'exercise-tasks-selection-new',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Create Selection Panel | Exercise Tasks',
-                  },
-                },
-                {
-                  path: 'view/:panelId',
-                  component: ExerciseTasksPanelsView,
-                  name: 'exercise-tasks-selection-view',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Selection Panel | Exercise Tasks',
-                  },
-                },
-              ],
-            },
-            {
-              path: 'scenario',
-              component: ExerciseTasksPanels,
-              children: [
-                {
-                  path: '',
-                  component: ExerciseTaskScenario,
-                  name: 'exercise-tasks-scenario',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Scenario Responses | Exercise Tasks',
-                  },
-                },
-                {
-                  path: 'new',
-                  component: ExerciseTasksPanelsNew,
-                  name: 'exercise-tasks-scenario-new',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Create Scenario Response Panel | Exercise Tasks',
-                  },
-                },
-                {
-                  path: 'view/:panelId',
-                  component: ExerciseTasksPanelsView,
-                  name: 'exercise-tasks-scenario-view',
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Scenario Response Panel | Exercise Tasks',
-                  },
                 },
               ],
             },

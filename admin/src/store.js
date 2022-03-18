@@ -9,8 +9,6 @@ import services from '@/store/services';
 import exerciseCollection from '@/store/exercise/collection';
 import exerciseCreateJourney from '@/store/exercise/createJourney';
 import exerciseDocument from '@/store/exercise/document';
-import applications from '@/store/applications';
-import application from '@/store/application';
 import assessment from '@/store/assessment';
 import assessments from '@/store/assessments';
 import notifications from '@/store/notifications';
@@ -20,7 +18,6 @@ import events from '@/store/events';
 import characterChecks from '@/store/characterChecks/characterChecks';
 import candidates from '@/store/candidates';
 import notes from '@/store/notes';
-import candidateApplications from '@/store/candidateApplications';
 import qualifyingTest from '@/store/qualifyingTest/qualifyingTest';
 import qualifyingTestResponses from '@/store/qualifyingTest/qualifyingTestResponses';
 import connectionMonitor from '@/store/connectionMonitor';
@@ -37,8 +34,6 @@ const store = new Vuex.Store({
     exerciseCollection,
     exerciseCreateJourney,
     exerciseDocument,
-    applications,
-    application,
     assessment,
     assessments,
     events,
@@ -46,7 +41,6 @@ const store = new Vuex.Store({
     invitations,
     candidates,
     notes,
-    candidateApplications,
     qualifyingTest,
     qualifyingTestResponses,
     connectionMonitor,

@@ -18,23 +18,6 @@
             <ul class="govuk-header__navigation user-menu">
               <li class="govuk-header__navigation-item">
                 <RouterLink
-                  v-if="authorisedToPerformAction"
-                  :to="{ name: 'events' }"
-                  class="govuk-header__link"
-                >
-                  Events
-                </RouterLink>
-              </li>
-              <li class="govuk-header__navigation-item">
-                <RouterLink
-                  :to="{ name: 'notifications' }"
-                  class="govuk-header__link"
-                >
-                  Notifications
-                </RouterLink>
-              </li>
-              <li class="govuk-header__navigation-item">
-                <RouterLink
                   :to="{ name: 'exercises' }"
                   class="govuk-header__link"
                 >
@@ -50,17 +33,6 @@
                 </RouterLink>
               </li>
 
-              <li
-                v-if="authorisedToPerformAction"
-                class="govuk-header__navigation-item"
-              >
-                <RouterLink
-                  :to="{ name: 'users' }"
-                  class="govuk-header__link"
-                >
-                  Users
-                </RouterLink>
-              </li>
               <li class="govuk-header__navigation-item">
                 <a
                   v-if="$route.name !== 'sign-in'"
