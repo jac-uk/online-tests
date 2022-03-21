@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "qt-admin",
   "version": "0.86.0",
   "private": true,
   "scripts": {

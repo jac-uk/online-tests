@@ -53,9 +53,9 @@ Then sign in with your Google account:
 firebase login
 ```
 
-Configure Firebase CLI to use the staging environment:
+Configure Firebase CLI to use the develop environment:
 ```
-firebase use staging
+firebase use qualifying-tests-staging
 ```
 
 ### Install project dependencies
@@ -69,7 +69,7 @@ npm install
 ### Deploy a single function to develop
 
 ```
-npx firebase deploy --project=digital-platform-develop --only functions:exportApplicationCharacterIssues
+npx firebase deploy --project=qualifying-tests-develop --only functions:exportApplicationCharacterIssues
 ```
 
 ### Deploy to staging
@@ -103,7 +103,7 @@ To run the emulator on your local machine, create a `./data/firestore.json` file
 Install the dependency for this script globally:
 
 ``` npm install -g node-firestore-import-export```
-Once installed, you can run `npm run db:export` to get a copy of the current `digital-platform-develop` repository, which will save
+Once installed, you can run `npm run db:export` to get a copy of the current `qualifying-tests-develop` repository, which will save
 a deep copy of the entire firestore DB into the `/data/firestore.json` file. Be aware this does cause a read for every document collection on google cloud.
 Set up the emulators by running `npm run firestore` which will just boot up the firestore gcloud emulation. You may need to
 install this by following [this guide](https://firebase.google.com/docs/firestore/security/test-rules-emulator#install_the_emulator).

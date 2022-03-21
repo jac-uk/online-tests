@@ -1,29 +1,29 @@
 {
   "projects": {
-    "develop": "digital-platform-develop",
-    "staging": "digital-platform-staging",
-    "production": "platform-production-9207d",
-    "default": "digital-platform-develop"
+    "develop": "qualifying-tests-develop",
+    "staging": "qualifying-tests-staging",
+    "production": "qualifying-tests-production",
+    "default": "qualifying-tests-develop"
   },
   "targets": {
-    "digital-platform-develop": {
+    "qualifying-tests-develop": {
       "hosting": {
         "develop-admin-app": [
-          "jac-admin-develop"
+          "qt-admin-develop"
         ]
       }
     },
-    "digital-platform-staging": {
+    "qualifying-tests-staging": {
       "hosting": {
         "staging-admin-app": [
-          "jac-apply-admin-staging"
+          "qt-admin-staging"
         ]
       }
     },
-    "platform-production-9207d": {
+    "qualifying-tests-production": {
       "hosting": {
         "production-admin-app": [
-          "jac-apply-admin-production"
+          "qt-admin-production"
         ]
       }
     }
