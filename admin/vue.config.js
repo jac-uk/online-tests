@@ -13,6 +13,9 @@ module.exports = {
       }),
     ],
   },
+  devServer: {
+    port: 8180,
+  },
   css: {
     loaderOptions: {
       sass: {

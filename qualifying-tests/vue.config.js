@@ -14,7 +14,7 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 8083,
+    port: 8183,
   },
   css: {
     loaderOptions: {
