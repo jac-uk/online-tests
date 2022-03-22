@@ -58,14 +58,6 @@
             :selection.sync="selectedItems"
             @change="getTableData"
           >
-            <template #actions>
-              <button
-                class="govuk-button moj-button-menu__item moj-page-header-actions__action govuk-!-margin-right-2 govuk-!-margin-bottom-3"
-                :disabled="isButtonDisabled"
-              >
-                Export data
-              </button>
-            </template>
             <template #row="{row}">
               <TableCell :title="tableColumns[0].title">
                 <RouterLink
