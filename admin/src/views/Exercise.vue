@@ -40,12 +40,14 @@
 
 <script>
 import LoadingMessage from '@jac-uk/jac-kit/draftComponents/LoadingMessage';
+import SubNavigation from '@/components/Navigation/SubNavigation';
 import { mapState } from 'vuex';
 import { isEditable, hasQualifyingTests, isProcessing } from '@/helpers/exerciseHelper';
 
 export default {
   components: {
     LoadingMessage,
+    SubNavigation,
   },
   data() {
     return {
