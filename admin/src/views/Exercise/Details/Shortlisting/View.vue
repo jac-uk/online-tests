@@ -1,14 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-shortlisting-edit'}"
-      >
-        Update shortlisting methods
-      </router-link>
-    </div>
     <h2 class="govuk-heading-l">
       Shortlisting methods
     </h2>

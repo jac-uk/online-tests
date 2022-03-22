@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-assessments-edit'}"
-      >
-        Update assessment options
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       Assessment options
     </h2>

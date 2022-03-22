@@ -1,14 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-downloads-edit'}"
-      >
-        Update downloads
-      </router-link>
-    </div>
     <h2 class="govuk-heading-l">
       Downloads
     </h2>

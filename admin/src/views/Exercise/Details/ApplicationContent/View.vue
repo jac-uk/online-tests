@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-application-content-edit'}"
-      >
-        Update application process
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       Application process
     </h2>
@@ -120,12 +110,10 @@
 
 import { isEditable, isProcessing, applicationContentList, unselectedApplicationParts } from '@/helpers/exerciseHelper';
 import Modal from '@jac-uk/jac-kit/components/Modal/Modal';
-import EditCurrentStep from './EditCurrentStep';
 
 export default {
   components: {
     Modal,
-    EditCurrentStep,
   },
   computed: {
     exercise() {

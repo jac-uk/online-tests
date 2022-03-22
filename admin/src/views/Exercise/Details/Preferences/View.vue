@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-preferences-edit'}"
-      >
-        Update working preferences
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       Working preferences
     </h2>

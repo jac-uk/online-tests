@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-eligibility-edit'}"
-      >
-        Update eligibility information
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       Eligibility information
     </h2>

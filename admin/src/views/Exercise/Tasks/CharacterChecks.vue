@@ -41,15 +41,6 @@
             {{ hmrcCheckRequired | toYesNo }}
           </span>
         </dd>
-        <dd class="govuk-summary-list__actions">
-          <RouterLink
-            class="govuk-link govuk-body-m change-link"
-            style="display:inline-block;"
-            :to="{name: 'exercise-tasks-character-checks-edit'}"
-          >
-            Change
-          </RouterLink>
-        </dd>
       </div>
     </dl>
 
@@ -384,11 +375,6 @@ export default {
     activeTab() {
       this.resetSelectedItems();
     },
-  },
-  async created() {
-    if (!(this.exercise.characterChecks && typeof this.exercise.characterChecks.HMRC === 'boolean')) {
-      this.$router.push({ name: 'exercise-tasks-character-checks-edit' });
-    }
   },
   methods: {
     openModal(modalRef){

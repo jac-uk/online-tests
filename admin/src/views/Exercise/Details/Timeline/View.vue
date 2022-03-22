@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-timeline-edit'}"
-      >
-        Update timeline
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       Timeline
     </h2>

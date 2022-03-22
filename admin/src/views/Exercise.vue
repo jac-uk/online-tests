@@ -23,13 +23,6 @@
           <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
             {{ exerciseName }}
           </h1>
-          <router-link
-            v-if="!hasJourney && isEditable"
-            class="govuk-link print-none"
-            :to="{name: 'exercise-edit-name'}"
-          >
-            Edit name
-          </router-link>
         </div>
       </div>
       <div class="govuk-grid-row">

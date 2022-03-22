@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="text-right">
-      <router-link
-        v-if="isEditable"
-        class="govuk-link"
-        :to="{name: 'exercise-details-contacts-edit'}"
-      >
-        Update exercise contacts
-      </router-link>
-    </div>
-
     <h2 class="govuk-heading-l">
       JAC contacts
     </h2>

@@ -14,29 +14,17 @@ import Exercise from '@/views/Exercise';
 // Exercise details
 import ExerciseDetails from '@/views/Exercise/Details';
 import ExerciseDetailsOverview from '@/views/Exercise/Details/Overview';
-import ExerciseDetailsEditName from '@/views/Exercise/Details/EditName';
 import ExerciseDetailsApplicationContent from '@/views/Exercise/Details/ApplicationContent/View';
-import ExerciseDetailsApplicationContentEdit from '@/views/Exercise/Details/ApplicationContent/Edit';
 import ExerciseDetailsAssessments from '@/views/Exercise/Details/Assessments/View';
-import ExerciseDetailsAssessmentsEdit from '@/views/Exercise/Details/Assessments/Edit';
 import ExerciseDetailsContacts from '@/views/Exercise/Details/Contacts/View';
-import ExerciseDetailsContactsEdit from '@/views/Exercise/Details/Contacts/Edit';
 import ExerciseDetailsDownloads from '@/views/Exercise/Details/Downloads/View';
-import ExerciseDetailsDownloadsEdit from '@/views/Exercise/Details/Downloads/Edit';
 import ExerciseDetailsEligibility from '@/views/Exercise/Details/Eligibility/View';
-import ExerciseDetailsEligibilityEdit from '@/views/Exercise/Details/Eligibility/Edit';
 import ExerciseDetailsInvitations from '@/views/Exercise/Details/Invitations/View';
-import ExerciseDetailsInvitationsEdit from '@/views/Exercise/Details/Invitations/Edit';
 import ExerciseDetailsShortlisting from '@/views/Exercise/Details/Shortlisting/View';
-import ExerciseDetailsShortlistingEdit from '@/views/Exercise/Details/Shortlisting/Edit';
 import ExerciseDetailsSummary from '@/views/Exercise/Details/Summary/View';
-import ExerciseDetailsSummaryEdit from '@/views/Exercise/Details/Summary/Edit';
 import ExerciseDetailsTimeline from '@/views/Exercise/Details/Timeline/View';
-import ExerciseDetailsTimelineEdit from '@/views/Exercise/Details/Timeline/Edit';
 import ExerciseDetailsVacancy from '@/views/Exercise/Details/Vacancy/View';
-import ExerciseDetailsVacancyEdit from '@/views/Exercise/Details/Vacancy/Edit';
 import ExerciseDetailsPreferences from '@/views/Exercise/Details/Preferences/View';
-import ExerciseDetailsPreferencesEdit from '@/views/Exercise/Details/Preferences/Edit';
 
 // Exercise reports
 import ExerciseReports from '@/views/Exercise/Reports';
@@ -159,15 +147,6 @@ const router = new Router({
               },
             },
             {
-              name: 'exercise-edit-name',
-              path: 'edit-name',
-              component: ExerciseDetailsEditName,
-              meta: {
-                requiresAuth: true,
-                title: 'Edit Name | Exercise Details',
-              },
-            },
-            {
               path: 'assessments',
               component: EmptyRouterView,
               children: [
@@ -178,15 +157,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Assessment Options | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-assessments-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsAssessmentsEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Assessment Options | Exercise Details',
                   },
                 },
               ],
@@ -204,15 +174,6 @@ const router = new Router({
                     title: 'Contacts | Exercise Details',
                   },
                 },
-                {
-                  name: 'exercise-details-contacts-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsContactsEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Contacts | Exercise Details',
-                  },
-                },
               ],
             },
             {
@@ -226,15 +187,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Downloads | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-downloads-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsDownloadsEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Downloads | Exercise Details',
                   },
                 },
               ],
@@ -252,15 +204,6 @@ const router = new Router({
                     title: 'Eligibility | Exercise Details',
                   },
                 },
-                {
-                  name: 'exercise-details-eligibility-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsEligibilityEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Eligibility | Exercise Details',
-                  },
-                },
               ],
             },
             {
@@ -274,15 +217,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Invitations | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-invitations-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsInvitationsEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Invitations | Exercise Details',
                   },
                 },
               ],
@@ -300,15 +234,6 @@ const router = new Router({
                     title: 'Shortlisting | Exercise Details',
                   },
                 },
-                {
-                  name: 'exercise-details-shortlisting-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsShortlistingEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Shortlisting | Exercise Details',
-                  },
-                },
               ],
             },
             {
@@ -322,15 +247,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Summary | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-summary-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsSummaryEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Summary | Exercise Details',
                   },
                 },
               ],
@@ -348,15 +264,6 @@ const router = new Router({
                     title: 'Timeline | Exercise Details',
                   },
                 },
-                {
-                  name: 'exercise-details-timeline-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsTimelineEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Timeline | Exercise Details',
-                  },
-                },
               ],
             },
             {
@@ -370,15 +277,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Vacancy Information | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-vacancy-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsVacancyEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Vacancy Information | Exercise Details',
                   },
                 },
               ],
@@ -396,15 +294,6 @@ const router = new Router({
                     title: 'Preferences | Exercise Details',
                   },
                 },
-                {
-                  name: 'exercise-details-preferences-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsPreferencesEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Preferences | Exercise Details',
-                  },
-                },
               ],
             },
             {
@@ -418,15 +307,6 @@ const router = new Router({
                   meta: {
                     requiresAuth: true,
                     title: 'Application Content | Exercise Details',
-                  },
-                },
-                {
-                  name: 'exercise-details-application-content-edit',
-                  path: 'edit',
-                  component: ExerciseDetailsApplicationContentEdit,
-                  meta: {
-                    requiresAuth: true,
-                    title: 'Edit Application Content | Exercise Details',
                   },
                 },
               ],
