@@ -14,15 +14,6 @@
             Back
           </router-link>
         </div>
-        <div class="govuk-grid-column-three-quarters">
-          <div class="float-right govuk-!-margin-0">
-            <AddToFavouritesButton
-              class="govuk-!-margin-bottom-0"
-              :in-favourites="isInFavourites"
-              @click="updateFavourites"
-            />
-          </div>
-        </div>
       </div>
       <div class="govuk-grid-row clearfix govuk-!-margin-bottom-2">
         <div class="govuk-grid-column-full">
@@ -56,16 +47,12 @@
 
 <script>
 import LoadingMessage from '@jac-uk/jac-kit/draftComponents/LoadingMessage';
-import AddToFavouritesButton from '@jac-uk/jac-kit/draftComponents/AddToFavouritesButton';
-import SubNavigation from '@/components/Navigation/SubNavigation';
 import { mapState } from 'vuex';
 import { isEditable, hasQualifyingTests, isProcessing } from '@/helpers/exerciseHelper';
 
 export default {
   components: {
     LoadingMessage,
-    AddToFavouritesButton,
-    SubNavigation,
   },
   data() {
     return {
@@ -150,13 +137,6 @@ export default {
   methods: {
     redirectToErrorPage() {
       this.$router.replace({ name: 'exercise-not-found' });
-    },
-    updateFavourites() {
-      if (this.isInFavourites) {
-        this.$store.dispatch('exerciseDocument/removeFromFavourites', this.userId);
-      } else {
-        this.$store.dispatch('exerciseDocument/addToFavourites', this.userId);
-      }
     },
   },
 };
