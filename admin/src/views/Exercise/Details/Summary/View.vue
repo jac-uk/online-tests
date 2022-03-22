@@ -80,22 +80,6 @@
         </dd>
       </div>
     </dl>
-
-    <button
-      v-if="!isPublished"
-      :disabled="!canPublish"
-      class="govuk-button govuk-button--secondary"
-      @click="publish"
-    >
-      Publish on website
-    </button>
-    <button
-      v-if="isPublished"
-      class="govuk-button govuk-button--secondary"
-      @click="unPublish"
-    >
-      Remove from website
-    </button>
   </div>
 </template>
 
