@@ -22,7 +22,6 @@
       >
         <h2
           class="govuk-heading-l"
-          @click="refreshApplicationCounts"
         >
           Number of applications
         </h2>
@@ -46,17 +45,6 @@
     <div class="govuk-grid-column-one-half">
       <div class="background-blue govuk-!-margin-bottom-6 govuk-!-padding-3">
         <span v-if="isPublished">Published</span>
-        <div
-          v-if="isApproved"
-          class="float-right"
-        >
-          <a
-            class="govuk-link"
-            @click="changeState"
-          >
-            Change
-          </a>
-        </div>
         <span
           v-if="exercise.state"
           class="display-block govuk-!-font-size-27"
@@ -113,58 +101,7 @@
         </tbody>
       </table>
     </div>
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
-      <button
-        v-if="!isPublished"
-        :disabled="!canPublish"
-        class="govuk-button govuk-button--secondary govuk-!-margin-right-3"
-        @click="publish"
-      >
-        Publish on website
-      </button>
-      <button
-        v-if="isPublished"
-        class="govuk-button govuk-button--secondary govuk-!-margin-right-3"
-        @click="unPublish"
-      >
-        Remove from website
-      </button>
-      <button
-        v-if="isDraft"
-        :disabled="!isReadyToSubmit"
-        class="govuk-button govuk-!-margin-right-3"
-        @click="submitForApproval"
-      >
-        Submit for Approval
-      </button>
-      <button
-        v-if="isReadyForApproval"
-        class="govuk-button govuk-!-margin-right-3"
-        @click="approve"
-      >
-        Approve
-      </button>
-      <button
-        v-if="isApproved"
-        class="govuk-button govuk-!-margin-right-3"
-        @click="unlock"
-      >
-        Unlock
-      </button>
-      <br>
-      <ActionButton
-        v-if="isReadyForProcessing"
-        @click="startProcessing()"
-      >
-        Begin processing applications
-      </ActionButton>
-      <ActionButton
-        v-if="isProcessing"
-        @click="updateProcessing()"
-      >
-        Process late applications
-      </ActionButton>
-    </div>
+
     <Modal
       ref="modalChangeExerciseState"
     >
@@ -180,18 +117,13 @@
 import Timeline from '@jac-uk/jac-kit/draftComponents/Timeline';
 import createTimeline from '@jac-uk/jac-kit/helpers/Timeline/createTimeline';
 import exerciseTimeline from '@jac-uk/jac-kit/helpers/Timeline/exerciseTimeline';
-import ActionButton from '@jac-uk/jac-kit/draftComponents/ActionButton';
 import Modal from '@jac-uk/jac-kit/components/Modal/Modal';
 import ChangeExerciseState from '@/components/ModalViews/ChangeExerciseState';
-import { functions } from '@/firebase';
-import { logEvent } from '@/helpers/logEvent';
-import { authorisedToPerformAction }  from '@/helpers/authUsers';
 import { isApproved, isProcessing, applicationCounts } from '@/helpers/exerciseHelper';
 
 export default {
   components: {
     Timeline,
-    ActionButton,
     Modal,
     ChangeExerciseState,
   },
@@ -240,7 +172,6 @@ export default {
       return this.isApproved && !this.isProcessing;
       // @TODO perhaps also check that exercise has closed
     },
-
     hasOpened() {
       if (this.exercise) {
         switch (this.exercise.state) {
@@ -306,52 +237,11 @@ export default {
         && this.exerciseProgress.downloads;
     },
   },
-  methods: {
-    submitForApproval() {
-      this.$store.dispatch('exerciseDocument/submitForApproval');
-    },
-    approve() {
-      this.$store.dispatch('exerciseDocument/approve');
-    },
-    unlock() {
-      this.$store.dispatch('exerciseDocument/unlock');
-    },
-    async publish() {
-      await this.$store.dispatch('exerciseDocument/publish');
-      logEvent('info', 'Exercise published', {
-        exerciseId: this.exerciseId,
-        exerciseRef: this.exercise.referenceNumber,
-      });
-    },
-    async unPublish() {
-      await this.$store.dispatch('exerciseDocument/unpublish');
-      logEvent('info', 'Exercise unpublished', {
-        exerciseId: this.exerciseId,
-        exerciseRef: this.exercise.referenceNumber,
-      });
-    },
-    async startProcessing() {
-      await functions.httpsCallable('initialiseApplicationRecords')({ exerciseId: this.exerciseId });
-    },
-    async updateProcessing() {
-      // this is temporary function to cover late applications to existing exercises. It can be removed when we automatically create applicationRecords and existing exercises have been processed
-      await functions.httpsCallable('initialiseMissingApplicationRecords')({ exerciseId: this.exerciseId });
-    },
-    changeState() {
-      this.$refs['modalChangeExerciseState'].openModal();
-    },
-    refreshApplicationCounts() {
-      if (authorisedToPerformAction(this.$store.getters['auth/getEmail'])) {
-        this.$store.dispatch('exerciseDocument/refreshApplicationCounts');
-      }
-    },
-  },
 };
 </script>
 
 <style scoped>
 .background-blue .govuk-link {
   cursor: pointer;
-
 }
 </style>
