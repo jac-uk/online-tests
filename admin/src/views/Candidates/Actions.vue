@@ -42,20 +42,6 @@
           >
             Current email address: {{ currentEmail }}
           </h2>
-          <TextField
-            id="new-login-email-address"
-            v-model="newEmailAddress"
-            class="govuk-!-width-one-half"
-            label="New email address:"
-            type="email"
-            required
-          />
-          <button
-            class="govuk-button govuk-!-margin-bottom-4"
-            @click="save"
-          >
-            Update
-          </button>
         </div>
       </div>
     </form>
@@ -66,14 +52,12 @@
 import firebase from '@firebase/app';
 import { functions } from '@/firebase';
 import { authorisedToPerformAction }  from '@/helpers/authUsers';
-import TextField from '@jac-uk/jac-kit/draftComponents/Form/TextField';
 import Banner from '@jac-uk/jac-kit/draftComponents/Banner';
 import Form from '@jac-uk/jac-kit/draftComponents/Form/Form';
 
 export default {
   name: 'Actions',
   components: {
-    TextField,
     Banner,
   },
   extends: Form,
@@ -119,38 +103,6 @@ export default {
       }
       catch (error) {
         this.setMessage('Failed to perform action.', 'warning');
-      }
-    },
-    async save() {
-      this.validate();
-      if (this.isValid()) {
-        if (this.authorisedToPerformAction) {
-          this.submitted = true;
-          try {
-            const response = await functions.httpsCallable('updateEmailAddress')({
-              currentEmailAddress: this.currentEmailAddress,
-              newEmailAddress: this.newEmailAddress });
-
-            if (response.data === false) {
-              this.setMessage('Failed to update email address.', 'warning');
-            } else {
-              this.setMessage('Email address was updated.', 'success');
-              this.currentEmailAddress = response.data;
-            }
-          }
-          catch (error) {
-            this.setMessage('Failed to perform action.', 'warning');
-          }
-          this.$refs.form.reset();
-          setTimeout(() => {
-            this.submitted = false;
-          },5000);
-          setTimeout(() => {
-            this.status = null;
-          },5000);
-        } else {
-          this.setMessage('Unauthorised to perform action.', 'warning');
-        }
       }
     },
     setMessage(message, status) {

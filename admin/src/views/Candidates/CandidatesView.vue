@@ -9,32 +9,12 @@
       :tabs="tabs"
       :active-tab.sync="activeTab"
     />
-    <span
-      class="float-right govuk-!-margin-left-4"
-    >
-      <button
-        v-if="editMode"
-        class="govuk-button govuk-button btn-unlock"
-        @click="toggleEdit"
-      >
-        Done
-      </button>
-      <button
-        v-else
-        class="govuk-button govuk-button--secondary btn-mark-as-applied"
-        @click="toggleEdit"
-      >
-        Edit
-      </button>
-    </span>
 
     <div
       v-if="activeTab === 'details'"
     >
       <PersonalDetailsSummary
         :personal-details="personalDetails"
-        :editable="editMode"
-        @update="updateCandidate"
       />
       <dl v-if="characterInformation">
         <CharacterInformationSummary
@@ -94,7 +74,6 @@ export default {
   data() {
     return {
       authorisedToPerformAction: false,
-      editMode: false,
       tabs: [
         {
           ref: 'details',
@@ -170,9 +149,6 @@ export default {
     updateCandidate(obj) {
       this.makeFullName(obj);
       this.$store.dispatch('candidates/savePersonalDetails', { data: obj, id: this.candidateId });
-    },
-    toggleEdit(){
-      this.editMode = !this.editMode;
     },
   },
 };
