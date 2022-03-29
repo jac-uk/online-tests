@@ -30,5 +30,5 @@ if (process.env.VUE_APP_RECAPTCHA_TOKEN) {
 const auth = firebase.auth;
 const Timestamp = firebase.firestore.Timestamp;
 
-export { firestore, auth, functions, Timestamp };
+export { firestore, auth, functions, appCheck, Timestamp };
 export default firebase;

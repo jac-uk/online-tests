@@ -11,6 +11,11 @@ import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 import './styles/main.scss';
 
+// allow AppCheck to run and pass on local development machines?
+if (process.env.NODE_ENV !== 'production' && process.env.VUE_APP_APPCHECK_DEBUG_TOKEN) {
+  self.FIREBASE_APPCHECK_DEBUG_TOKEN = process.env.VUE_APP_APPCHECK_DEBUG_TOKEN;
+}
+
 if (process.env.NODE_ENV !== 'development') {
   // Split the URL
   const host = window.location.host;
